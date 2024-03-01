@@ -1,0 +1,49 @@
+﻿@model Kutuphane_Otomasyonu.Model.KitapTurleri
+
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="row">
+
+    <div class="col-lg">
+        <div class="ibox">
+            <div class="ibox-head">
+                <h2>Kitap Türü Güncelleme</h2>
+            </div>
+            <div class="ibox-body">
+                @using (Html.BeginForm("Duzenle", "KitapTurleri", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="form-group">
+                        <strong>Kitap Türü:</strong>
+                        <div>
+                            @Html.TextBoxFor(x => x.KitapTuru, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.KitapTuru, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i>&nbsp;Düzenle</button>
+                        @Html.ActionLink(" Kitap Türü Listesine Geri Dön", "/Index", null, new { @class = "btn btn-info fa fa-arrow-left " })
+                    </div>
+
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+

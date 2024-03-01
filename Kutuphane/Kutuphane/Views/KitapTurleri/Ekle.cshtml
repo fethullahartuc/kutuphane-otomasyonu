@@ -1,0 +1,42 @@
+﻿@model Kutuphane_Otomasyonu.Model.KitapTurleri
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="row">
+
+    <div class="col-lg">
+        <div class="ibox">
+            <div class="ibox-head">
+                <h2>Kitap Türü Ekleme</h2> 
+            </div>
+            <div class="ibox-body">
+                <form action="Ekle" method="post">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" }) @*- hata mesajı verdirmek için*@
+                    <div class="form-group">
+                        <strong>Kitap Türü:</strong>
+                        <input type="text" name="KitapTuru" class="form-control" />
+                        @Html.ValidationMessageFor(x => x.KitapTuru, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Ekle</button>
+                        @Html.ActionLink(" Kitap Türü Listesine Geri Dön", "/Index", null, new { @class = "btn btn-info fa fa-arrow-left " })
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+

@@ -1,0 +1,47 @@
+﻿
+@model List<Kutuphane_Otomasyonu.Model.EmanetKitaplar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg">
+        <div class="ibox">
+            <div class="ibox-head">
+                <h2>İade Edilen Kitaplar Listesi</h2>
+
+            </div>
+
+            <div class="ibox-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Üye</th>
+                            <th>Kitap</th>
+                            <th>Aldığı Tarih</th>
+                            <th>İade Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@Html.DisplayFor(x => item.Id)</th>
+                                <td>@Html.DisplayFor(x => item.Uyeler.AdiSoyadi)</td>
+                                <td>@Html.DisplayFor(x => item.Kitaplar.KitapAdi)</td>
+                                <td>@Html.DisplayFor(x => item.KitapAldigiTarihi)</td>
+                                <td>@Html.DisplayFor(x => item.KitapIadeTarihi)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

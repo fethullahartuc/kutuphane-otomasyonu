@@ -1,0 +1,53 @@
+﻿
+@model List<Kutuphane_Otomasyonu.Model.Yazarlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form action="Index">
+    <label style="font-weight:bold">Yazar Ara :</label>
+    @Html.TextBox("ara")
+    <button class="btn btn-success m-2" type="submit"><i class="fa fa-search"></i>&nbsp;Ara</button>
+</form>
+
+<div class="row">
+
+    <div class="col-lg">
+        <div class="ibox">
+            <div class="ibox-head">
+                <h2>Yazarlar</h2>
+            </div>
+            <div class="ibox-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-1">Id</th>
+                            <th class="col-9">Yazar Adı</th>
+                            <th class="col-1 text-center">Düzenle</th>
+                            <th class="col-1 text-center">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.Id</th>
+                                <td>@item.YazarAdi</td>
+                                <td class="text-center"><a href="/Yazarlar/Duzenle/@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&nbsp;Düzenle</a></td>
+                                <td class="text-center"><a href="/Yazarlar/Sil/@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Sil</a></td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+                <a href="/Yazarlar/Ekle" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Yeni</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+

@@ -1,0 +1,60 @@
+﻿
+@model List<Kutuphane_Otomasyonu.Model.Uyeler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form action="Index">
+    <label style="font-weight:bold">Üye Ara :</label>
+    @Html.TextBox("ara")
+    <button class="btn btn-success m-2" type="submit"><i class="fa fa-search"></i>&nbsp;Ara</button>
+</form>
+
+<div class="row">
+    <div class="col-lg">
+        <div class="ibox">
+            <div class="ibox-head">
+                <h2>Üye Listesi</h2>
+
+            </div>
+
+            <div class="ibox-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Adı Soyadı</th>
+                            <th>Telefon</th>
+                            <th>Email</th>
+                            <th>Adres</th>
+                            <th>Kayıt Tarihi</th>
+                            <th class="text-center">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@Html.DisplayFor(x => item.Id)</th>
+                                <td>@Html.DisplayFor(x => item.AdiSoyadi)</td>
+                                <td>@Html.DisplayFor(x => item.Telefon)</td>
+                                <td>@Html.DisplayFor(x => item.Email)</td>
+                                <td>@Html.DisplayFor(x => item.Adres)</td>
+                                <td>@Html.DisplayFor(x => item.KayitTarihi)</td>
+                                <td class="text-center">
+                                    @Html.ActionLink("Düzenle", "Duzenle", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                                    @Html.ActionLink("Sil", "Sil", new { id = item.Id }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Üye Silinsin Mi ?')" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Uyeler/Ekle" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Yeni</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,66 @@
+﻿
+@model Kutuphane_Otomasyonu.Model.Uyeler
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+
+    <div class="col-lg">
+        <div class="ibox">
+            <div class="ibox-head">
+                <h2>Üye Ekleme</h2>
+            </div>
+            <div class="ibox-body">
+
+                @using (Html.BeginForm("Ekle", "Uyeler", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
+
+                    <div class="form-group">
+                        <b>Adı Soyadı :</b>
+                        @Html.TextBoxFor(x => x.AdiSoyadi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.AdiSoyadi, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <b>Telefon No :</b>
+                        @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Telefon, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <b>Email :</b>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <b>Adres :</b>
+                        @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Adres, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <b>Kayıt Tarihi :</b>
+                        @Html.TextBoxFor(x => x.KayitTarihi, new { @class = "form-control", type="datetime-local" })
+                        @Html.ValidationMessageFor(x => x.KayitTarihi, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Ekle</button>
+                        @Html.ActionLink(" Üye Listesine Geri Dön", "/Index", null, new { @class = "btn btn-info fa fa-arrow-left " })
+                    </div>
+
+
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
